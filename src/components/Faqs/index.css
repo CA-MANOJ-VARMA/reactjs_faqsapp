@@ -1,0 +1,15 @@
+/* Write your code here. */
+.css-bg-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: bisque;
+  border-radius: 15px;
+  margin: 30px;
+}
+
+.css-ul-container {
+  list-style-type: none;
+  margin: 0;
+}
