@@ -4,31 +4,14 @@ import FaqItem from '../FaqItem'
 import './index.css'
 
 class Faqs extends Component {
-  state = {faqsListState: []}
-
-  componentDidMount() {
-    const {faqsList} = this.props
-    this.setState({faqsListState: faqsList})
-  }
-
-  openedFunction = openedId => {
-    const {faqsListState} = this.state
-    const clickedItem = faqsListState.findIndex(
-      eachItem => eachItem.id === openedId,
-    )
-
-    faqsListState[clickedItem].opened = !faqsListState[clickedItem].opened
-    this.setState({faqsListState})
-  }
-
   displayFunction = () => {
-    const {faqsListState} = this.state
+    const {faqsList} = this.props
 
     return (
       <ul className="css-ul-container">
-        {faqsListState.map(eachItem => (
+        {faqsList.map(eachItem => (
           <li key={eachItem.id}>
-            <FaqItem faqItem={eachItem} openedFunction={this.openedFunction} />
+            <FaqItem faqItem={eachItem} />
           </li>
         ))}
       </ul>

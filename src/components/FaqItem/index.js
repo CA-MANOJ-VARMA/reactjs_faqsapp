@@ -3,11 +3,17 @@ import {Component} from 'react'
 import './index.css'
 
 class FaqItem extends Component {
+  state = {isIconClicked: false}
+
+  isIconClickedFunction = () => {
+    const {isIconClicked} = this.state
+    this.setState({isIconClicked: !isIconClicked})
+  }
+
   faqItemFunction = () => {
-    const {faqItem, openedFunction} = this.props
-    const openedFunctionItem = id => {
-      openedFunction(id)
-    }
+    const {faqItem} = this.props
+    const {isIconClicked} = this.state
+
     console.log(faqItem)
     return (
       <div className="css-faqItem-container">
@@ -16,19 +22,19 @@ class FaqItem extends Component {
           <button
             type="button"
             className="css-button-itself"
-            onClick={() => openedFunctionItem(faqItem.id)}
+            onClick={this.isIconClickedFunction}
           >
             <img
               src={
-                !faqItem.opened
+                !isIconClicked
                   ? 'https://assets.ccbp.in/frontend/react-js/faqs-plus-icon-img.png'
                   : 'https://assets.ccbp.in/frontend/react-js/faqs-minus-icon-img.png'
               }
-              alt={!faqItem.opened ? 'plus' : 'minus'}
+              alt={!isIconClicked ? 'plus' : 'minus'}
             />
           </button>
         </div>
-        {faqItem.opened && (
+        {isIconClicked && (
           <>
             <hr />
             <div className="css-answer-container">
